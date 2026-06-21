@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>캐시쉐이크 앱 받기 · phantomz inc</title>
+    <style>
+      body {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+          sans-serif;
+        background: #f8f9fa;
+        color: #111827;
+        display: flex;
+        min-height: 100vh;
+        align-items: center;
+        justify-content: center;
+      }
+      main {
+        text-align: center;
+        padding: 24px;
+        max-width: 360px;
+      }
+      h1 {
+        color: #ff6a00;
+        font-size: 28px;
+        margin: 0 0 8px;
+      }
+      p {
+        color: #6b7280;
+        margin: 4px 0 20px;
+      }
+      .code {
+        display: inline-block;
+        background: #fff;
+        border: 1px solid #e5e7eb;
+        border-radius: 8px;
+        padding: 6px 12px;
+        color: #111827;
+        font-weight: 700;
+        letter-spacing: 1px;
+        margin-bottom: 16px;
+      }
+      a.btn {
+        display: block;
+        margin: 10px auto;
+        padding: 14px 20px;
+        border-radius: 12px;
+        background: #ff6a00;
+        color: #fff;
+        text-decoration: none;
+        font-weight: 700;
+        max-width: 280px;
+      }
+      a.btn.secondary {
+        background: #fff;
+        color: #111827;
+        border: 1px solid #e5e7eb;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>캐시쉐이크</h1>
+      <p>흔들어서 포인트를 모으는 리워드 앱</p>
+      <div id="codeWrap" style="display: none">
+        <div class="code" id="code"></div>
+      </div>
+      <a class="btn" id="iosBtn">App Store에서 받기</a>
+      <a class="btn secondary" id="androidBtn">Google Play에서 받기</a>
+    </main>
+    <script>
+      (function () {
+        var params = new URLSearchParams(location.search);
+        var invite = (params.get("invite") || "").trim();
+
+        var APP_STORE = "https://apps.apple.com/kr/app/id6760399383";
+        var PLAY_BASE =
+          "https://play.google.com/store/apps/details?id=com.kohangil.shakenearnreactnative";
+        // Android 는 Install Referrer 로 설치 후 코드 회수가 가능하다.
+        var PLAY_STORE = invite
+          ? PLAY_BASE + "&referrer=" + encodeURIComponent("invite=" + invite)
+          : PLAY_BASE;
+
+        var ua = navigator.userAgent || navigator.vendor || "";
+        var isIOS = /iphone|ipad|ipod/i.test(ua);
+        var isAndroid = /android/i.test(ua);
+
+        // iOS deferred deep link: App Store 는 referrer 가 없으므로, 초대코드를
+        // 클립보드에 심어 앱 첫 실행 시 읽어 자동적용하도록 한다. 클립보드 쓰기는
+        // 사용자 제스처(버튼 탭) 안에서 해야 iOS Safari 에서 안정적으로 동작한다.
+        function copyInvite() {
+          if (!invite || !navigator.clipboard) return Promise.resolve();
+          return navigator.clipboard
+            .writeText("CASHSHAKE_INVITE:" + invite)
+            .catch(function () {});
+        }
+        function go(url) {
+          copyInvite().then(function () {
+            location.href = url;
+          });
+        }
+
+        if (invite) {
+          document.getElementById("code").textContent = "초대코드 " + invite;
+          document.getElementById("codeWrap").style.display = "block";
+        }
+
+        var iosBtn = document.getElementById("iosBtn");
+        var androidBtn = document.getElementById("androidBtn");
+        iosBtn.href = APP_STORE;
+        iosBtn.onclick = function (e) {
+          e.preventDefault();
+          go(APP_STORE);
+        };
+        androidBtn.href = PLAY_STORE;
+        androidBtn.onclick = function (e) {
+          e.preventDefault();
+          go(PLAY_STORE);
+        };
+
+        // Android 는 referrer 로 코드가 전달되므로 자동 이동.
+        // iOS 는 클립보드 제스처가 필요해 자동 이동하지 않고 버튼 탭을 유도한다.
+        if (isAndroid) {
+          copyInvite().then(function () {
+            location.replace(PLAY_STORE);
+          });
+        }
+      })();
+    </script>
+  </body>
+</html>
