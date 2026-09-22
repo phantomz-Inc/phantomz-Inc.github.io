@@ -206,3 +206,10 @@ taurusx.com, 70097, RESELLER
 bluexad.ai, 1996418805747683328, RESELLER
 brightmountainmedia.com, 2686958, RESELLER
 copper6.com, 766114, RESELLER
+
+# Unity Ads 보강 (260922)
+adwmg.com, 159512, RESELLER, c9688a22012618e7
+appnexus.com, 17973, RESELLER, f5ab79cb980f11d1
+bold-win.com, 1013, RESELLER, 71746737d0bab951
+my-cast.tv, 987033, RESELLER, 8c33fe1bd714ffd7
+triplelift.com, 8614, RESELLER, 6c33edb13117fd86
