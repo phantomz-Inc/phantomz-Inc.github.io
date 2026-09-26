@@ -213,3 +213,6 @@ appnexus.com, 17973, RESELLER, f5ab79cb980f11d1
 bold-win.com, 1013, RESELLER, 71746737d0bab951
 my-cast.tv, 987033, RESELLER, 8c33fe1bd714ffd7
 triplelift.com, 8614, RESELLER, 6c33edb13117fd86
+
+# Meta Audience Network — Business ID 1652376386515542 (수익 관리자 앱 인증 지침, 260926)
+facebook.com, 1652376386515542, DIRECT, c3e20eee3f780d68
