@@ -530,3 +530,6 @@ inmobi.com, 9e311c7a68e94888aac7fbb4272381e2, RESELLER, 83e75a7ae333ca9d
 freewheel.tv, 535664-r-523319, RESELLER
 smartadserver.com, 4284, RESELLER
 33across.com, 0010b00002Xbn7QAAR, RESELLER, bbea06d9c4d2853c
+
+# PubMatic (SDK-less Open Bidding, 260929 승인)
+pubmatic.com, 159856, DIRECT, 5d62403b186f2ace
