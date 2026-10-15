@@ -863,3 +863,6 @@ xandr.com,15840,RESELLER,f5ab79cb980f11d1
 yieldlab.net,15465081,RESELLER
 zmaticoo.com,5135199,RESELLER
 zmaticoo.com,5135535,RESELLER
+
+# Pangle 보강 — start.io 파트너 (Pangle 목록 갱신분, 261015)
+zmaticoo.com, 114122, RESELLER
