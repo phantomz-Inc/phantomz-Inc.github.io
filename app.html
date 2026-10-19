@@ -20,6 +20,17 @@
         text-align: center;
         padding: 24px;
         max-width: 360px;
+        word-break: keep-all;
+        overflow-wrap: break-word;
+      }
+      @media screen and (max-width: 640px) {
+        body {
+          font-size: 15px;
+          line-height: 1.5;
+        }
+        main {
+          padding: 20px 16px;
+        }
       }
       h1 {
         color: #ff6a00;
@@ -89,6 +100,34 @@
         var ua = navigator.userAgent || navigator.vendor || "";
         var isIOS = /iphone|ipad|ipod/i.test(ua);
         var isAndroid = /android/i.test(ua);
+
+        // 261019: 이 페이지는 Supabase Auth 의 Site URL 이기도 하다 — 카카오 로그인 콜백 오류(OAuth state 만료 등)는
+        // 앱 스킴이 아니라 여기로 떨어진다. 그때 아래 스토어 자동 이동을 타면 로그인하던 사람이 스토어 화면에 갇혔다.
+        // 오류 파라미터가 있으면 스토어로 보내지 않고, 같은 파라미터를 들고 앱으로 돌려보낸다(앱의 콜백 오류 처리가 받는다).
+        var hashParams = new URLSearchParams((location.hash || "").replace(/^#/, ""));
+        var authError =
+          params.get("error") ||
+          params.get("error_code") ||
+          hashParams.get("error") ||
+          hashParams.get("error_code");
+        if (authError) {
+          var backToApp = "shakenearnreactnative://" + location.search + location.hash;
+          var main = document.querySelector("main");
+          main.textContent = "";
+          var title = document.createElement("h1");
+          title.textContent = "캐시쉐이크";
+          var note = document.createElement("p");
+          note.textContent = "로그인이 끝나지 않았어요. 앱으로 돌아가 다시 시도해 주세요.";
+          var back = document.createElement("a");
+          back.className = "btn";
+          back.href = backToApp;
+          back.textContent = "앱으로 돌아가기";
+          main.appendChild(title);
+          main.appendChild(note);
+          main.appendChild(back);
+          location.replace(backToApp);
+          return;
+        }
 
         // iOS deferred deep link: App Store 는 referrer 가 없으므로, 초대코드를
         // 클립보드에 심어 앱 첫 실행 시 읽어 자동적용하도록 한다. 클립보드 쓰기는
