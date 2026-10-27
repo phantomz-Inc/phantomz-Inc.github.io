@@ -2952,3 +2952,22 @@ zmaticoo.com,5135063,RESELLER
 zmaticoo.com,5135082,RESELLER
 zmaticoo.com,5135195,RESELLER
 zmaticoo.com,5135655,RESELLER
+
+# AdPie (adpies.com DIRECT 6ae04b1b4ee1110743eca65a + official resellers, 261027)
+adpies.com, 6ae04b1b4ee1110743eca65a, DIRECT
+themediagrid.com, C25FWT, RESELLER, 35d5010d7789b49d
+themediagrid.com, GI4FNK, RESELLER, 35d5010d7789b49d
+adcolony.com, f858ba060bce51ad, RESELLER, 1ad675c9de6b5176
+rhythmone.com, 3704396951, RESELLER, a670c89d4a324e47
+rhythmone.com, 3589813809, RESELLER, a670c89d4a324e47
+sonobi.com, 71169bd4a5, RESELLER, d1a215d9eb
+adcolony.com, 197af3936679d34e, RESELLER, 1ad675c9de6b5176
+rhythmone.com, 188404962, RESELLER, a670c89d4a324e47
+adcolony.com, 1efc6603710003ea, RESELLER
+adcolony.com, f858ba060bce51ad, RESELLER
+themediagrid.com, Q4LBJR, DIRECT, 35d5010d7789b49d
+themediagrid.com, FH3TKJ, RESELLER, 35d5010d7789b49d
+rhythmone.com, 1295892552, RESELLER, a670c89d4a324e47
+adcolony.com, 29b7f4a14dc689eb, RESELLER, 1ad675c9de6b5176
+rhythmone.com, 3880497124, RESELLER, a670c89d4a324e47
+imds.tv, 82578, RESELLER, ae6c32151e71f19d
